@@ -1,0 +1,34 @@
+<!doctype html>
+<title>Sprinkler Configuration</title>
+<table>
+    <tr><td colspan="2">
+        <form action="{{url_for("action_stop_sprinklers")}}" method="POST">
+            <input type="submit" value="STOP SPRINKLERS">
+        </form>
+    </td></tr>
+    <tr><td colspan="2"><hr></td></tr>
+    <th>Run Once</th>
+    <form action="{{url_for("action_run_once")}}" method="POST">
+        <tr><td>Frontyard Time</td>     <td><input name="frontTime" type="number" value="1" min="1" max="10"></td></tr>        
+        <tr><td>Backyard Time</td>      <td><input name="backTime" type="number" value="1" min="1" max="10"></td></tr>
+        <tr><td><input type="submit" value="Run Now"></td></tr>
+    </form>
+    <tr><td colspan="2"><hr></td></tr>
+    <th>Schedule</th>
+    <form action="{{url_for("action_set_schedule")}}" method="POST">
+        <tr><td>Enable Schedule</td>    <td><input name="enabled"   value="taco" type="checkbox"{% if enabled   %} checked="on"{% endif %}></td></tr>
+
+        <tr><td>Sunday</td>             <td><input name="sunday"    type="checkbox"{% if sunday    %} checked="on"{% endif %}></td></tr>
+        <tr><td>Monday</td>             <td><input name="monday"    type="checkbox"{% if monday    %} checked="on"{% endif %}></td></tr>
+        <tr><td>Tuesday</td>            <td><input name="tuesday"   type="checkbox"{% if tuesday   %} checked="on"{% endif %}></td></tr>
+        <tr><td>Wednesday</td>          <td><input name="wednesday" type="checkbox"{% if wednesday %} checked="on"{% endif %}></td></tr>
+        <tr><td>Thursday</td>           <td><input name="thursday"  type="checkbox"{% if thursday  %} checked="on"{% endif %}></td></tr>
+        <tr><td>Friday</td>             <td><input name="friday"    type="checkbox"{% if friday    %} checked="on"{% endif %}></td></tr>
+        <tr><td>Saturday</td>           <td><input name="saturday"  type="checkbox"{% if saturday  %} checked="on"{% endif %}></td></tr>
+
+        <tr><td>Start Time</td>         <td><input name="startTime" type="time"   value="{{startTimeHour}}:{{startTimeMinute}}:00"></td></tr>
+        <tr><td>Frontyard Time</td>     <td><input name="frontTime" type="number" value="{{frontTime}}" min="1" max="10"></td></tr>        
+        <tr><td>Backyard Time</td>      <td><input name="backTime"  type="number" value="{{backTime}}" min="1" max="10"></td></tr>
+        <tr><td><input type="submit" value="Save Schedule"></td></tr>
+    </form>
+</table>
